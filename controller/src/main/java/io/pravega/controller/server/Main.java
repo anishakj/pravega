@@ -24,8 +24,14 @@ import io.pravega.controller.store.host.impl.HostMonitorConfigImpl;
 import io.pravega.controller.timeout.TimeoutServiceConfig;
 import io.pravega.controller.util.Config;
 import io.pravega.shared.metrics.MetricsProvider;
+import io.pravega.shared.metrics.StatsProvider;
+import java.net.InetAddress;
+import java.net.NetworkInterface;
+import java.net.SocketException;
+import java.util.Enumeration;
 import java.util.Optional;
 import lombok.extern.slf4j.Slf4j;
+import static java.net.NetworkInterface.getNetworkInterfaces;
 
 /**
  * Entry point of controller server.
@@ -33,11 +39,26 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class Main {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws SocketException  {
+	log.info("======> IP details");
+        Enumeration en = getNetworkInterfaces();
+        while (en.hasMoreElements()) {
+            NetworkInterface n = (NetworkInterface) en.nextElement();
+            Enumeration ee = n.getInetAddresses();
+            while (ee.hasMoreElements()) {
+                InetAddress i = (InetAddress) ee.nextElement();
+                System.out.println(i.getHostAddress());
+                log.info("===> IP details: {}", i.getHostAddress());
+            }
+        }
+        log.info("======> End of fetch ip");
 
+        StatsProvider statsProvider = null;
         try {
             //0. Initialize metrics provider
             MetricsProvider.initialize(Config.getMetricsConfig());
+            statsProvider = MetricsProvider.getMetricsProvider();
+            statsProvider.start();
 
             ZKClientConfig zkClientConfig = ZKClientConfigImpl.builder()
                     .connectionString(Config.ZK_URL)
@@ -91,6 +112,10 @@ public class Main {
         } catch (Throwable e) {
             log.error("Controller service failed", e);
             System.exit(-1);
+        } finally {
+            if (statsProvider != null) {
+                statsProvider.close();
+            }
         }
     }
 }

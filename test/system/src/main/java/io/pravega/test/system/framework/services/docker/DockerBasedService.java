@@ -128,6 +128,11 @@ public abstract class DockerBasedService implements io.pravega.test.system.frame
                 for (int i = 0; i < taskList.size(); i++) {
                     log.info("task {}", taskList.get(i).name());
                     if (taskList.get(i).status().state().equals(TaskStatus.TASK_STATE_RUNNING)) {
+			log.info("Network size {}", taskList.get(i).networkAttachments().size());
+		        for (int j =0; j < taskList.get(i).networkAttachments().size(); j++) {
+                       		 log.info("Network addresses {}", taskList.get(i).networkAttachments().get(j).addresses().get(0));
+                        }
+	
                         String[] uriArray = taskList.get(i).networkAttachments().get(0).addresses().get(0).split("/");
                         ImmutableList<PortConfig> numPorts = Exceptions.handleInterrupted(() -> dockerClient.inspectService(serviceList.get(0).id()).endpoint().spec().ports());
                         for (int k = 0; k < numPorts.size(); k++) {

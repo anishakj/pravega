@@ -49,7 +49,7 @@ services:
         -Dmetrics.enableCSVReporter=false
         -Dpravegaservice.publishedIPAddress=${PUBLISHED_ADDRESS}
         -Dpravegaservice.listeningIPAddress=${LISTENING_ADDRESS}
-        -Xmx900m
+        -Xmx2000m
         -XX:OnError="kill -9 p%"
         -XX:+ExitOnOutOfMemoryError
         -XX:+CrashOnOutOfMemoryError

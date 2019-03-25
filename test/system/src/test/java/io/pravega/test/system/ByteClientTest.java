@@ -49,13 +49,11 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.Timeout;
 import org.junit.runner.RunWith;
-import org.junit.Ignore;
 
 import static org.junit.Assert.assertTrue;
 
 @Slf4j
 @RunWith(SystemTestRunner.class)
-@Ignore	
 public class ByteClientTest extends AbstractSystemTest {
 
     private static final String STREAM = "testByteClientStream";

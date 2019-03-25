@@ -54,6 +54,7 @@ import static org.junit.Assert.assertTrue;
 
 @Slf4j
 @RunWith(SystemTestRunner.class)
+@Ignore	
 public class ByteClientTest extends AbstractSystemTest {
 
     private static final String STREAM = "testByteClientStream";

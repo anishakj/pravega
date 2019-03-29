@@ -86,7 +86,7 @@ public class PravegaControllerDockerService extends DockerBasedService {
 
         String controllerSystemProperties = systemPropertyBuilder.toString();
         String env1 = "PRAVEGA_CONTROLLER_OPTS=" + controllerSystemProperties;
-        String env2 = "JAVA_OPTS=-Xmx512m";
+        String env2 = "JAVA_OPTS=-Xmx1000m";
         Map<String, String> labels = new HashMap<>();
         labels.put("com.docker.swarm.task.name", serviceName);
 

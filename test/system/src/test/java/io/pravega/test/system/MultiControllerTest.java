@@ -40,8 +40,10 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import static io.pravega.test.system.framework.Utils.DOCKER_BASED;
 import static org.junit.Assert.assertEquals;
+import org.junit.Ignore;
 
 @Slf4j
+@Ignore
 @RunWith(SystemTestRunner.class)
 public class MultiControllerTest extends AbstractSystemTest {
 

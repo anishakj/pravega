@@ -10,7 +10,7 @@
 #FROM openjdk:8u181-jre-alpine
 FROM openjdk:11.0-jdk-slim
 
-RUN apk add --update \
+RUN apt-get add --update \
     rpcbind \
     nfs-utils \
     gcompat \

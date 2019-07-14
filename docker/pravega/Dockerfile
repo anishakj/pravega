@@ -10,14 +10,14 @@
 #FROM openjdk:8u181-jre-alpine
 FROM openjdk:11.0-jdk-slim
 
-RUN apt-get add --update \
+#RUN apt-get add --update \
+RUN apt-get update && apt-get install -y \
     rpcbind \
     nfs-utils \
     gcompat \
     python \
     jq \
-    curl \
-  && rm -rf /var/cache/apk/*
+    curl
 
 EXPOSE 9090 9091 10000 12345
 

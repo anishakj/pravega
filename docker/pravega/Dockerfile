@@ -7,7 +7,8 @@
 #
 #     http://www.apache.org/licenses/LICENSE-2.0
 #
-FROM openjdk:8u181-jre-alpine
+#FROM openjdk:8u181-jre-alpine
+FROM openjdk:11.0-jdk-slim
 
 RUN apk add --update \
     rpcbind \

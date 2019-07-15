@@ -12,7 +12,6 @@ FROM adoptopenjdk/openjdk11:alpine-slim
 RUN apk add --update \
     rpcbind \
     nfs-utils \
-    gcompat \
     python \
     jq \
     curl \

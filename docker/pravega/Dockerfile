@@ -7,15 +7,15 @@
 #
 #     http://www.apache.org/licenses/LICENSE-2.0
 #
-FROM adoptopenjdk/openjdk11:alpine-slim 
+FROM openjdk:11.0-jdk-slim
 
-RUN apk add --update \
+RUN apt-get update && apt-get install -y -q \
     rpcbind \
-    nfs-utils \
+    nfs-common \
     python \
     jq \
     curl \
-  && rm -rf /var/cache/apk/*
+  && rm -rf /var/lib/apt/lists/*
 
 EXPOSE 9090 9091 10000 12345
 

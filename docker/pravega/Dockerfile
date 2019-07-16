@@ -16,6 +16,7 @@ RUN apt-get update && apt-get install -y -q \
     jq \
     curl \
     net-tools \
+    iproute2  \
   && rm -rf /var/lib/apt/lists/*
 
 EXPOSE 9090 9091 10000 12345

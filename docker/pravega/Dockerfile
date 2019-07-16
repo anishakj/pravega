@@ -15,6 +15,7 @@ RUN apt-get update && apt-get install -y -q \
     python \
     jq \
     curl \
+    net-tools \
   && rm -rf /var/lib/apt/lists/*
 
 EXPOSE 9090 9091 10000 12345

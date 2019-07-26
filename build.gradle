@@ -540,11 +540,11 @@ project('test:compatibility') {
     dependencies {
         //testCompile group: 'ch.qos.logback', name: 'logback-classic', version: qosLogbackVersion
         //testCompile group: 'org.apache.commons', name: 'commons-csv', version: apacheCommonsCsvVersion
-        testCompile project(path:':common', configuration:'testRuntime')
-        testCompile project(path:':shared:protocol', configuration:'testRuntime')
-        testCompile project(path:':segmentstore:server', configuration:'testRuntime')
-        testCompile project(path:':segmentstore:server:host', configuration:'testRuntime')
-        testCompile project(path:':shared:metrics', configuration:'testRuntime')
+        //testCompile project(path:':common', configuration:'testRuntime')
+       // testCompile project(path:':shared:protocol', configuration:'testRuntime')
+        //testCompile project(path:':segmentstore:server', configuration:'testRuntime')
+        //testCompile project(path:':segmentstore:server:host', configuration:'testRuntime')
+       // testCompile project(path:':shared:metrics', configuration:'testRuntime')
    }
     //disable the default test task.
     test {
